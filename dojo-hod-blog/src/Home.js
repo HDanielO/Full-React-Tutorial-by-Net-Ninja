@@ -1,23 +1,25 @@
 import { useState } from "react";
 
 const Home = () => {
-  const [firstName, setName] = useState("Dave");
-  const [age, setAge] = useState(25);
-  const handleClick = (age) => {
-    // firstName = "Andrew";
-    setName("Andrew");
-    setAge(age);
-  };
-
-  //So I noticed that you can't use the normal 'document.queryselector().addEventListener kind of way because we'll be referencing a DOM element in out queryselectot() method that we have not yet passed..because it comes before the return which passes the elements into tht DOM
+  const [blogs, setBlogs] = useState([
+    { title: "My new website", body: "lorem ipsum...", author: "mario", id: 1 },
+    { title: "Welcome party!", body: "lorem ipsum...", author: "yoshi", id: 2 },
+    {
+      title: "Web dev top tips",
+      body: "lorem ipsum...",
+      author: "mario",
+      id: 3,
+    },
+  ]);
 
   return (
     <div className="home">
-      <h2>Home Page</h2>
-      <p>
-        {firstName} is {age} years old
-      </p>
-      <button onClick={() => handleClick(20)}>CLICK HERE</button>
+      {blogs.map((blog) => (
+        <div className="blog-preview" key={blog.id}>
+          <h2>{blog.title}</h2>
+          <p>Written by {blog.author}</p>
+        </div>
+      ))}
     </div>
   );
 };
