@@ -20,9 +20,12 @@ const Home = () => {
     setBlogs(newBlogs);
   };
 
+  const [name, setName] = useState("Mario");
+
   useEffect(() => {
     console.log("use effect ran");
-  });
+    console.log(name);
+  }, [name]);
 
   return (
     <div className="home">
@@ -31,6 +34,8 @@ const Home = () => {
         title="All BLOGS!"
         handleDelete={handleDelete}
       />
+      <button onClick={() => setName("Luigi")}>change name</button>
+      <p>{name}</p>
     </div>
   );
 };
